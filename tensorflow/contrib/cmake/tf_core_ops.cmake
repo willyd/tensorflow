@@ -13,7 +13,7 @@
 
 set(tf_op_lib_names
     "array_ops"
-    "attention_ops"
+    #"attention_ops"
     "candidate_sampling_ops"
     "control_flow_ops"
     "data_flow_ops"
@@ -32,7 +32,7 @@ set(tf_op_lib_names
     "sparse_ops"
     "state_ops"
     "string_ops"
-    "summary_ops"
+    #"summary_ops"
     "training_ops"
 )
 

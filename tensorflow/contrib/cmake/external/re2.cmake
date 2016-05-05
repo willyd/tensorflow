@@ -6,7 +6,11 @@ set(re2_URL https://github.com/google/re2.git)
 set(re2_TAG 791beff)
 set(re2_BUILD ${CMAKE_BINARY_DIR}/re2/src/re2)
 set(re2_LIBRARIES ${re2_BUILD}/obj/so/libre2.so)
+if(MSVC)
+get_filename_component(re2_STATIC_LIBRARIES ${re2_BUILD}/re2.lib ABSOLUTE)
+else()
 get_filename_component(re2_STATIC_LIBRARIES ${re2_BUILD}/libre2.a ABSOLUTE)
+endif()
 set(re2_INCLUDES ${re2_BUILD})
 
 # We only need re2.h in external/re2/re2/re2.h
@@ -44,3 +48,4 @@ ADD_LIBRARY(re2_lib STATIC IMPORTED
     DEPENDS re2)
 SET_TARGET_PROPERTIES(re2_lib PROPERTIES
     IMPORTED_LOCATION ${re2_STATIC_LIBRARIES})
+add_dependencies(re2_lib re2)
